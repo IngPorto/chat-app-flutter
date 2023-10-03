@@ -1,3 +1,4 @@
+import 'package:chat_app/presentation/chat/chat_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:chat_app/config/theme/app_theme.dart';
 
@@ -12,15 +13,7 @@ class MyApp extends StatelessWidget {
       title: 'Yes No App',
       debugShowCheckedModeBanner: false,
       theme: AppTheme(selectedColor: 0).theme(),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Welcome'),
-        ),
-        body: Center(
-          child:
-              ElevatedButton(onPressed: () {}, child: const Text('Click Me')),
-        ),
-      ),
+      home: const ChatScreen()
     );
   }
 }
