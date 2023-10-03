@@ -9,17 +9,54 @@ class ChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-      leading: const Padding(
-        padding: EdgeInsets.all(4.0),
-        child: CircleAvatar(
-          backgroundImage: NetworkImage(urlImage),
-          // backgroundColor: Colors.blue,
-          // child: Icon(Icons.person),
+      appBar: AppBar(
+        leading: const Padding(
+          padding: EdgeInsets.all(4.0),
+          child: CircleAvatar(
+            backgroundImage: NetworkImage(urlImage),
+            // backgroundColor: Colors.blue,
+            // child: Icon(Icons.person),
+          ),
+        ),
+        title: const Text('Joselito Linares'),
+        centerTitle: false,
+      ),
+      body: _ChatView(),
+    );
+  }
+}
+
+class _ChatView extends StatelessWidget {
+  const _ChatView({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      // Permite que el area de trabajo no interfiera en el notch de iOS o en los espacios de botones dinámicos
+      // top: false,  // comerse el area superior hasta lo más alto posible
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Column(
+          children: [
+            Expanded(
+                // Ocupar todo el area posible
+                child: ListView.builder(
+              itemCount: 10,
+              itemBuilder: (BuildContext context, int index) {
+                return ListTile(
+                    title: Text(
+                  'Indice: ${index + 1}',
+                  style: const TextStyle(color: Colors.white),
+                ));
+              },
+            )),
+            Text('Hola'),
+            Text('Mundo')
+          ],
         ),
       ),
-      title: const Text('Joselito Linares'),
-      centerTitle: false,
-    ));
+    );
   }
 }
