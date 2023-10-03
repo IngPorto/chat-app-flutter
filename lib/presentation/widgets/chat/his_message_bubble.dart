@@ -18,7 +18,7 @@ class HisMessageBubble extends StatelessWidget {
               borderRadius: BorderRadius.circular(20)),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Text('Hey man', style: TextStyle(color: Colors.white)),
+            child: Text(text, style: TextStyle(color: Colors.white)),
           ),
         ),
         SizedBox(height: 5),
