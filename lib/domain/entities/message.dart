@@ -1,5 +1,5 @@
 enum FromWho {
-  mine, his
+  me, his
 }
 class Message {
   final String text;
