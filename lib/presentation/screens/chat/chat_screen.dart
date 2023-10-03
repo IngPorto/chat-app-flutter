@@ -1,5 +1,6 @@
 import 'package:chat_app/presentation/widgets/chat/his_message_bubble.dart';
 import 'package:chat_app/presentation/widgets/chat/my_message_bubble.dart';
+import 'package:chat_app/presentation/widgets/shared/message_field_box.dart';
 import 'package:flutter/material.dart';
 
 const String urlImage =
@@ -20,7 +21,7 @@ class ChatScreen extends StatelessWidget {
             // child: Icon(Icons.person),
           ),
         ),
-        title: const Text('Joselito Linares'),
+        title: const Text('José Linares'),
         centerTitle: false,
       ),
       body: _ChatView(),
@@ -52,12 +53,7 @@ class _ChatView extends StatelessWidget {
                     : HisMessageBubble(text: 'Hey dude');
               },
             )),
-            Container(
-              width: double.infinity,
-              decoration:
-                  BoxDecoration(color: Color.fromARGB(255, 45, 95, 170)),
-              child: Text('Hola'),
-            )
+            MessageFieldBox(),
           ],
         ),
       ),
