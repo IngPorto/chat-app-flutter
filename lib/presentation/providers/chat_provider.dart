@@ -18,10 +18,11 @@ class ChatProvider extends ChangeNotifier {
     )
   ];
 
-  Future<void> sendMessage(String text, FromWho fromWho) async {
+  Future<void> sendMessage(String text) async {
     messagesList.add(Message(
       text: text,
-      fromWho: fromWho,
+      fromWho: FromWho.me,
     ));
+    notifyListeners(); // Redibujar parecido al setState((){});, algo del provider cambió
   }
 }

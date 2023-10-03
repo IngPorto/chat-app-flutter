@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class MessageFieldBox extends StatelessWidget {
-  const MessageFieldBox({super.key});
+  final ValueChanged<String>
+      onValue; // es un tipo de función el cual funciona como callback que devuelve un String. Es diferente a voidCallback
+  const MessageFieldBox({super.key, required this.onValue});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,8 @@ class MessageFieldBox extends StatelessWidget {
     );
 
     return TextFormField(
-      onTapOutside: (event) { // Quitar el foco al dar click afuera del input
+      onTapOutside: (event) {
+        // Quitar el foco al dar click afuera del input
         focusNode.unfocus();
       },
       focusNode: focusNode,
@@ -35,14 +38,14 @@ class MessageFieldBox extends StatelessWidget {
             onPressed: () {
               final textValue = textController.text;
               textController.clear();
-              print('$textValue');
+              onValue(textValue);
               // Valor de la caja de texto
             },
           )),
       onFieldSubmitted: (value) {
         textController.clear();
         focusNode.requestFocus();
-        print('Submited value: $value');
+        onValue(value);
       },
     );
   }
