@@ -21,9 +21,10 @@ class AppTheme {
   // Tiene que ser de tipo ThemeData porque es el tipo de dato que recibe el Material
   ThemeData theme() {
     return ThemeData(
-        useMaterial3: true,
-        colorSchemeSeed: _colorTheme[selectedColor],
-        brightness: Brightness.dark);
+      useMaterial3: true,
+      colorSchemeSeed: _colorTheme[selectedColor],
+      // brightness: Brightness.dark // Modo oscuro
+    );
   }
 
   get customColor => _customColor;

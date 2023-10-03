@@ -1,3 +1,5 @@
+import 'package:chat_app/presentation/widgets/chat/his_message_bubble.dart';
+import 'package:chat_app/presentation/widgets/chat/my_message_bubble.dart';
 import 'package:flutter/material.dart';
 
 const String urlImage =
@@ -45,15 +47,17 @@ class _ChatView extends StatelessWidget {
                 child: ListView.builder(
               itemCount: 10,
               itemBuilder: (BuildContext context, int index) {
-                return ListTile(
-                    title: Text(
-                  'Indice: ${index + 1}',
-                  style: const TextStyle(color: Colors.white),
-                ));
+                return index % 2 == 0
+                    ? MyMessageBubble(text: 'My Message')
+                    : HisMessageBubble(text: 'Hey dude');
               },
             )),
-            Text('Hola'),
-            Text('Mundo')
+            Container(
+              width: double.infinity,
+              decoration:
+                  BoxDecoration(color: Color.fromARGB(255, 45, 95, 170)),
+              child: Text('Hola'),
+            )
           ],
         ),
       ),
