@@ -52,14 +52,15 @@ class _ChatView extends StatelessWidget {
             Expanded(
                 // Ocupar todo el area posible
                 child: ListView.builder(
-                  controller: chatProvider.chatScrollCroller,
+              controller: chatProvider.chatScrollCroller,
               itemCount: chatProvider.messagesList
                   .length, // Será la cantidad de elementos en mi MessageList
               itemBuilder: (BuildContext context, int index) {
                 final message = chatProvider.messagesList[index];
                 return message.fromWho == FromWho.me
                     ? MyMessageBubble(text: message.text)
-                    : HisMessageBubble(text: message.text);
+                    : HisMessageBubble(
+                        text: message.text, imageUrl: message.imageUrl);
               },
             )),
             MessageFieldBox(

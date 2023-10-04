@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 class HisMessageBubble extends StatelessWidget {
   final String text;
-  const HisMessageBubble({super.key, required this.text});
+  final String? imageUrl;
+
+  const HisMessageBubble({super.key, required this.text, this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class HisMessageBubble extends StatelessWidget {
           ),
         ),
         SizedBox(height: 5),
-        _ImageBubble(),
+        _ImageBubble(image: imageUrl),
         SizedBox(height: 10),
       ],
     );
@@ -30,6 +32,10 @@ class HisMessageBubble extends StatelessWidget {
 }
 
 class _ImageBubble extends StatelessWidget {
+  final String? image;
+
+  const _ImageBubble({super.key, this.image});
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context)
@@ -39,7 +45,9 @@ class _ImageBubble extends StatelessWidget {
       // Redondear bordes de una imagen
       borderRadius: BorderRadius.circular(20),
       child: Image.network(
-        'https://yesno.wtf/assets/yes/13-c3082a998e7758be8e582276f35d1336.gif',
+        image != null
+            ? image!
+            : 'https://yesno.wtf/assets/yes/13-c3082a998e7758be8e582276f35d1336.gif',
         width: size.width * 0.7,
         height: 150,
         fit: BoxFit.cover,

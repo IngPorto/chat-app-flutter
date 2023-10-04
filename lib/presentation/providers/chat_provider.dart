@@ -1,3 +1,4 @@
+import 'package:chat_app/config/helpers/get_yes_no_answer.dart';
 import 'package:chat_app/domain/entities/message.dart';
 import 'package:flutter/material.dart';
 
@@ -5,6 +6,7 @@ import 'package:flutter/material.dart';
 class ChatProvider extends ChangeNotifier {
   final ScrollController chatScrollCroller =
       ScrollController(); // para controlar el scroll del listView
+  final GetYesNoAnswer getYesNoAnswer = GetYesNoAnswer();
 
   List<Message> messagesList = [
     Message(
@@ -27,8 +29,21 @@ class ChatProvider extends ChangeNotifier {
       text: text,
       fromWho: FromWho.me,
     ));
+
+    if (text.endsWith("?")) {
+      await hisReply();
+    }
     notifyListeners(); // Redibujar parecido al setState((){});, algo del provider cambió
     moveScrollToBottom();
+  }
+
+  Future<void> hisReply() async {
+    final hisMessage = await GetYesNoAnswer().getAnswer();
+    messagesList.add(Message(
+      text: hisMessage.text,
+      fromWho: FromWho.his,
+      imageUrl: hisMessage.imageUrl,
+    ));
   }
 
   void moveScrollToBottom() {
