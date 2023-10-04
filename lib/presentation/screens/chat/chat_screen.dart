@@ -52,6 +52,7 @@ class _ChatView extends StatelessWidget {
             Expanded(
                 // Ocupar todo el area posible
                 child: ListView.builder(
+                  controller: chatProvider.chatScrollCroller,
               itemCount: chatProvider.messagesList
                   .length, // Será la cantidad de elementos en mi MessageList
               itemBuilder: (BuildContext context, int index) {
