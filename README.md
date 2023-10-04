@@ -2,6 +2,9 @@
 
 By: David Portocarrero Caicedo
 
+## Sample
+![](./assets/screenshot_sample.jpg)
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
